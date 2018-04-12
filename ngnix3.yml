@@ -1,8 +1,8 @@
 ---
 - hosts: all
-  become: yes
   tasks:
    - name: install maven (and other packages if needed)
+     become: yes
      yum: name={{ item }} state=latest
      with_items:
        - maven
