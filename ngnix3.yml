@@ -1,20 +1,20 @@
 ---
-- name: Install nginx
-  hosts: localhost
-  become: true
-
+-  hosts: localhost
   tasks:
-  - name: Add epel-release repo
-    yum:
-      name: epel-release
-      state: present
-
-  - name: Install httpd
-    yum:
-      name: httpd
-      state: present
-
-  - name: Start NGiNX
-    service:
-      name: httpd
-      state: started
+      - name: Create file
+        file:
+            path: /tmp/yallo
+            state: touch
+ 
+- hosts: localhost
+  sudo: yes
+  tasks:
+      - name: Create user
+        user:
+            name: mario
+            shell: /bin/zsh
+ 
+      - name: Install zlib  
+        yum:
+            name: zlib
+            state: latest
