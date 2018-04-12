@@ -1,8 +1,20 @@
 ---
-- hosts: all
+- name: Install nginx
+  hosts: localhost
+  become: true
+
   tasks:
-   - name: install maven (and other packages if needed)
-     become: yes
-     yum: name={{ item }} state=latest
-     with_items:
-       - maven
+  - name: Add epel-release repo
+    yum:
+      name: epel-release
+      state: present
+
+  - name: Install nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
