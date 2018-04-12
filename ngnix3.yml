@@ -9,12 +9,12 @@
       name: epel-release
       state: present
 
-  - name: Install nginx
+  - name: Install httpd
     yum:
-      name: nginx
+      name: httpd
       state: present
 
   - name: Start NGiNX
     service:
-      name: nginx
+      name: httpd
       state: started
