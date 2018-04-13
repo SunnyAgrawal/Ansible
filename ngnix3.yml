@@ -1,20 +1,25 @@
 ---
-- hosts: localhost
+- name: Install nginx
+  hosts: host.name.ip
+  become: true
+
   tasks:
-      - name: Create file
-        file:
-            path: /tmp/yallo
-            state: touch
- 
-- hosts: localhost
-  sudo: yes
-  tasks:
-      - name: Create user
-        user:
-            name: mario
-            shell: /bin/zsh
- 
-      - name: Install zlib  
-        yum:
-            name: zlib
-            state: latest
+  - name: Add epel-release repo
+    yum:
+      name: epel-release
+      state: present
+
+  - name: Install nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Insert Index Page
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
