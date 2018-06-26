@@ -1,18 +1,27 @@
 version: "3"
 services:
-  web:
+  wordpress:
     # replace username/repo:tag with your name and image details
-    image: username/repo:tag
+    image: wordpress
+    links:
+      - mysql:mysql
     deploy:
       replicas: 5
       restart_policy:
         condition: on-failure
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-    ports:
-      - "80:80"
+      ports:
+      - "8080:80"
+    networks:
+      - webnet
+  mysql:
+    image: mysql
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
+      ports:
+      - "8080:80"
     networks:
       - webnet
   visualizer:
