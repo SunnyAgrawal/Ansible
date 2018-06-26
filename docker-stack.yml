@@ -10,7 +10,7 @@ services:
       restart_policy:
         condition: on-failure
       ports:
-      - "8080:80"
+      - "8000:80"
     networks:
       - webnet
   mysql:
@@ -35,5 +35,5 @@ services:
         constraints: [node.role == manager]
     networks:
       - webnet
-networks:
-  webnet:
+  networks:
+    webnet:
