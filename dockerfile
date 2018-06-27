@@ -6,4 +6,3 @@ RUN wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryMa
 WORKDIR /nexus/nexus
 RUN cd /bin
 EXPOSE 8081
-CMD [“nexus”, “start”]
