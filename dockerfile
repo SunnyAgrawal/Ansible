@@ -8,3 +8,4 @@ WORKDIR /nexus/nexus
 EXPOSE 8081
 WORKDIR /nexus/nexus/bin
 ENTRYPOINT ["/bin/bash", "-c", "./nexus start"]
+ENTRYPOINT ["/bin/bash", "-c", "sleep 5000"]
