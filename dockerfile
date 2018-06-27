@@ -6,4 +6,5 @@ WORKDIR /nexus
 RUN wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.12.1-01-unix.tar.gz && tar -xvzf nexus-3.12.1-01-unix.tar.gz && mv nexus-3.12.1-01 nexus
 WORKDIR /nexus/nexus
 EXPOSE 8081
-ENTRYPOINT ["/nexus/nexus/bin/nexus start"]
+WORKDIR /nexus/nexus/bin
+ENTRYPOINT ["/bin/bash", "-c", "nexus start"]
