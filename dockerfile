@@ -7,4 +7,4 @@ RUN wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryMa
 WORKDIR /nexus/nexus
 EXPOSE 8081
 WORKDIR /nexus/nexus/bin
-ENTRYPOINT ["/bin/bash", "-c", "./nexus start"]
+CMD ["/bin/bash", "./nexus start"]
